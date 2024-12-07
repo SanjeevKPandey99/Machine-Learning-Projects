@@ -15,14 +15,19 @@ f2.grid(row=1,column=0)
 def update(o):
     la_var = label.cget('text')
     e_var = e.get()
-    up = la_var + e_var + o
-    label.config(text= up)
+    if o.strip() in "+-*/**": 
+        up = la_var + " " + e_var + " " + o
+    else:
+        up = la_var + " " + e_var
+    label.config(text=up)
+    e.delete(0, END)
 
 def onClick(number):
+    """Handle number button clicks."""
     current = e.get()
-    update(" ")
-    e.delete(0,END)
-    e.insert(0,str(current) + str(number))
+    e.delete(0, END)
+    e.insert(0, str(current) + str(number))
+
 
 
 def Clear():
